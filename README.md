@@ -48,7 +48,7 @@ Run full simulation environment
 ~../tb-simulation/ros_ws$ roslaunch gazebo_environment testbed_kolvn_office.launch
 ~../tb-simulation/ros_ws$ roslaunch gazebo_environment willowgarage.launch
 ```
-Using Rviz to visualize sensor data 
+Using Rviz to visualize sensor data. Control robot speed (linear and angular) with /tb_cmd_vel, robot neck position with /tb_sim/cmd_pos
 
 ## Improvement
 Note that this package is under development. Improvement:
