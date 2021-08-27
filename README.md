@@ -20,7 +20,7 @@ Will port to Ubuntu 16 if requested
 Open terminal and clone package
 
 ```
-~..$ git clone <package_repo>
+~..$  git clone https://gitlab.com/ohmni-sdk/tb_gazebo_model.git tb-simulation
 ```
 Install with catkin_make
 ```
@@ -28,7 +28,7 @@ Install with catkin_make
 ~../tb-simulation/ros_ws$ catkin_make 
 ```
 
-Note that, during installation, these are some errors caused by missing packages, please install it with **apt** and report it to me if you found any. 
+Note that, during installation, these are some errors caused by missing packages, please install it with **apt** and report the issue [here](https://gitlab.com/ohmni-sdk/tb_gazebo_model/-/issues) if you found any. 
 Potential missing packages:
 ```
 ~$ sudo apt install ros-melodic-gazebo-plugins ros-melodic-rqt-robot-steering ros-melodic-rviz-imu-plugin ros-melodic-joint-state-publisher-gui
@@ -43,7 +43,10 @@ Run the visualization Rviz to display the ohmnibots model
 Run full simulation environment
 ```
 ~../tb-simulation/ros_ws$ source devel/setup.bash
+~../tb-simulation/ros_ws$ roslaunch gazebo_environment empty.launch
+### or run with office models 
 ~../tb-simulation/ros_ws$ roslaunch gazebo_environment testbed_kolvn_office.launch
+~../tb-simulation/ros_ws$ roslaunch gazebo_environment willowgarage.launch
 ```
 Using Rviz to visualize sensor data 
 
