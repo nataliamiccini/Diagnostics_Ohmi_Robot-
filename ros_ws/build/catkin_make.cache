@@ -1,0 +1,2 @@
+tb_sim/diagnostic_aggregator:tb_sim/diagnostic_aggregator_example:tb_sim/diagnostic_analysis:tb_sim/diagnostic_common_diagnostics:tb_sim/diagnostic_updater:tb_sim/gazebo_environment:tb_sim/rosdiagnostic:tb_sim/self_test:tb_sim/tb_description:tb_sim/tb_gazebo:tb_sim/tb_gazebo_plugins:tb_sim/tb_teleop
+-DCATKIN_DEVEL_PREFIX=/home/natalia/Scrivania/tb-simulation/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/natalia/Scrivania/tb-simulation/ros_ws/install -G Unix Makefiles

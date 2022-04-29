@@ -1,0 +1,8 @@
+prefix=/home/natalia/Scrivania/tb-simulation/ros_ws/devel
+
+Name: diagnostic_updater
+Description: Description of diagnostic_updater
+Version: 1.11.0
+Cflags: -I/home/natalia/Scrivania/tb-simulation/ros_ws/src/tb_sim/diagnostic_updater/include
+Libs: -L${prefix}/lib -ldiagnostic_updater
+Requires: diagnostic_msgs roscpp std_msgs

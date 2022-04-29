@@ -1,0 +1,8 @@
+prefix=/home/natalia/Scrivania/tb-simulation/ros_ws/devel
+
+Name: self_test
+Description: Description of self_test
+Version: 1.11.0
+Cflags: -I/home/natalia/Scrivania/tb-simulation/ros_ws/src/tb_sim/self_test/include
+Libs: -L${prefix}/lib 
+Requires: diagnostic_msgs diagnostic_updater roscpp

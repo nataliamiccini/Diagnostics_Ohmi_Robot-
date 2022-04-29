@@ -1,0 +1,8 @@
+prefix=/home/natalia/Scrivania/tb-simulation/ros_ws/install
+
+Name: rosdiagnostic
+Description: Description of rosdiagnostic
+Version: 1.11.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

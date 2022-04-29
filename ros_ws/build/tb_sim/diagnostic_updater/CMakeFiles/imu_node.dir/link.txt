@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/imu_node.dir/src/example.cpp.o  -o /home/natalia/Scrivania/tb-simulation/ros_ws/devel/lib/diagnostic_updater/imu_node -Wl,-rpath,/home/natalia/Scrivania/tb-simulation/ros_ws/build/gtest/googlemock/gtest ../../gtest/googlemock/gtest/libgtest.so -lpthread 

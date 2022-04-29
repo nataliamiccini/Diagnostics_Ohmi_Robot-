@@ -1,0 +1,8 @@
+prefix=/home/natalia/Scrivania/tb-simulation/ros_ws/devel
+
+Name: diagnostic_aggregator_example
+Description: Description of diagnostic_aggregator_example
+Version: 0.0.1
+Cflags: -I/home/natalia/Scrivania/tb-simulation/ros_ws/src/tb_sim/diagnostic_aggregator_example/include
+Libs: -L${prefix}/lib -ldiagnostic_aggregator_example_analyzers
+Requires: pluginlib xmlrpcpp roscpp diagnostic_msgs diagnostic_aggregator

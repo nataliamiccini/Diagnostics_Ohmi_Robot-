@@ -1,0 +1,8 @@
+prefix=/home/natalia/Scrivania/tb-simulation/ros_ws/devel
+
+Name: tb_teleop
+Description: Description of tb_teleop
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

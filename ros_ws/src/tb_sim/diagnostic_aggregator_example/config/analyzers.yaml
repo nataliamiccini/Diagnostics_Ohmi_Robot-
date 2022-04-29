@@ -1,0 +1,17 @@
+pub_rate: 2.0
+# path: Robot
+analyzers:
+  sensors:
+    type: diagnostic_aggregator/SensorsAnalyzer
+    path: Sensors
+    analyzers:
+      imu:
+        type: diagnostic_aggregator/ImuAnalyzer
+        path: imu
+        find_and_remove_prefix: imu
+        num_items: 6
+      tele_camera:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: tele_camera
+        find_and_remove_prefix: tele_camera
+        num_items: 1

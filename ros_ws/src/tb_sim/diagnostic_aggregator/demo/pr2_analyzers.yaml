@@ -1,0 +1,35 @@
+analyzers:
+  sensors:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Sensors
+    analyzers:
+      imu:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Imu
+        find_and_remove_prefix: imu
+        num_items: 1
+      scan:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Scan
+        timeout: 5.0
+        find_and_remove_prefix: scan
+        num_items: 2
+      joint_states:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Joint States
+        find_and_remove_prefix: joint_states
+        num_items: 1 
+      camera:
+        type: diagnostic_aggregator/AnalyzerGroup
+        path: Camera
+        analyzers:
+          tele_camera:
+            type: diagnostic_aggregator/GenericAnalyzer
+            path: Tele Camera
+            find_and_remove_prefix: tele_cam
+            num_items: 1     
+          nav_camera:
+            type: diagnostic_aggregator/GenericAnalyzer
+            path: Nav Camera
+            find_and_remove_prefix: nav_cam
+            num_items: 1 
