@@ -16,9 +16,9 @@
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "diagnostic_updater_imu");
-  
+  ros::init(argc, argv, "diagnostic_updater_imu")
   ros::NodeHandle nh;
+  //get params from file .yaml
   nh.getParam("param_imu_min", param_imu_min);
   nh.getParam("param_imu_max", param_imu_max);
 
