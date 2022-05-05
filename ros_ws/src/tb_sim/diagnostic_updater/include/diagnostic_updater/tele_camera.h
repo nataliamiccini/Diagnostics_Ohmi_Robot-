@@ -18,10 +18,15 @@ using namespace diagnostic_updater;
 int tele_camera_length;
 int tele_camera_zero;
 
+//Method executed at the call.
 void callback1(const sensor_msgs::ImageConstPtr& info_msg){
   tele_camera_length = info_msg->step;
 }
 
+
+/* This method is used to check if there is a fault in Tele Camera topic.
+   In particular it is done by checking if the lenght of the camera is zero.
+   If the lenght of the camera is zero then the tele camera is offline.*/
 void check_tele_camera(diagnostic_updater::DiagnosticStatusWrapper &stat)
 {  
   if (tele_camera_length == tele_camera_zero){
