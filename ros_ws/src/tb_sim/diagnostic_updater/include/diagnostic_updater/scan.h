@@ -31,6 +31,7 @@ void callback4(const sensor_msgs::LaserScan::ConstPtr& msg){
 
 /* This method is used to check if there is a fault in Scan topic.
    In particular it is done by checking if the ranges are within the range or out of range. 
+   If the range respects the bounds no fault is detected.
    Then we check if the scan is on or off by checking the lenght of the ranges. 
    If the lenght is zero, the scan is offline. */
 
