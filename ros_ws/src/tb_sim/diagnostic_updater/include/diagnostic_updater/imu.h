@@ -1,7 +1,7 @@
 
 #include <diagnostic_updater/diagnostic_updater.h>
 #include <std_msgs/Bool.h>
-#include <sensor_msgs/Imu.h>
+#include <sensor_msgs/Imu.h> //This is a message to hold data from an IMU
 #include <diagnostic_updater/publisher.h>
 #include <diagnostic_updater/update_functions.h>
 #include <diagnostic_updater/DiagnosticStatusWrapper.h>
@@ -20,13 +20,18 @@ float ang_vel_z;
 float param_imu_min;
 float param_imu_max;
 
-
+//Method executed at the call.
 void callback(const sensor_msgs::Imu::ConstPtr& msg){
   ang_vel_x = msg->angular_velocity.x;
   ang_vel_y = msg->angular_velocity.y;
   ang_vel_z = msg->angular_velocity.z;
 }
 
+/* This method is used to check if there is a fault in Imu topic.
+   In particular it is done by checking if the angular velocity 
+   is within range or out of range. 
+   The check is done for all three dimensions (x, y and z). 
+   If in all dimensions the speed respects the thresholds, then no fault is detected.*/
 void check_soglie_x(diagnostic_updater::DiagnosticStatusWrapper &stat)
 {  
   if (ang_vel_x > param_imu_min && ang_vel_x < param_imu_max)
