@@ -1,13 +1,12 @@
 
 #include <diagnostic_updater/diagnostic_updater.h>
 #include <std_msgs/Bool.h>
-#include <sensor_msgs/Imu.h>
 #include <diagnostic_updater/publisher.h>
 #include <diagnostic_updater/update_functions.h>
 #include <diagnostic_updater/DiagnosticStatusWrapper.h>
 #include "ros/ros.h"
 #include <iostream>
-#include <sensor_msgs/JointState.h>
+#include <sensor_msgs/JointState.h> //This is a message to hold data from a Joint States
 #include "robot_state_publisher/robot_state_publisher.h"
 #include "robot_state_publisher/joint_state_listener.h"
 #include <kdl_parser/kdl_parser.hpp>
@@ -26,7 +25,7 @@ double caster_wheel_joint;
 double neck_joint;
 double param_joint;
 
-
+//Method executed at the call.
 void callback2(const sensor_msgs::JointState::ConstPtr& msg){
    wheel_left_joint = msg->position[0];
    wheel_right_joint = msg->position[1];
@@ -35,6 +34,12 @@ void callback2(const sensor_msgs::JointState::ConstPtr& msg){
    neck_joint = msg->position[4];
 }
 
+/* This methods is used to check if there is a fault in Joint States topics.
+   In particular we have a function for each joint present within the topic. 
+   In each of them we evaluate if the position relative to that particular 
+   joint is greater or less than a threshold.
+   If all positions are greater than the threshold then no malfunction is detected. 
+   Otherwise the joint in which the error has been detected is indicated.*/
 void check_wheel_left_joint(diagnostic_updater::DiagnosticStatusWrapper &stat)
 { 
   if ( wheel_left_joint < param_joint ){
@@ -69,7 +74,6 @@ void check_caster_joint(diagnostic_updater::DiagnosticStatusWrapper &stat)
   stat.add("caster joint", caster_joint);
 }
 
-//ruota dietro
 void check_caster_wheel_joint(diagnostic_updater::DiagnosticStatusWrapper &stat)
 { 
 
