@@ -16,16 +16,22 @@
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "diagnostic_updater_imu")
-  ros::NodeHandle nh;
-  //get params from file .yaml
-  nh.getParam("param_imu_min", param_imu_min);
+  ros::init(argc, argv, "diagnostic_updater_imu") //Ros initialization function.
+  ros::NodeHandle nh; //Construct a NodeHandle Class. This class is used for writing nodes. 
+  
+  nh.getParam("param_imu_min", param_imu_min); //Get parameters from .yaml file and store them into indicated variables.
   nh.getParam("param_imu_max", param_imu_max);
-
-  diagnostic_updater::Updater updaterImu;
+  
+  diagnostic_updater::Updater updaterImu; //Construct an updater class.
   
   updaterImu.setHardwareID("/tb_sim/imu");
+  /* sottoscrive il topic /tb_sim/imu, assegna una dimensione massima alla coda e
+  collega l’evento al callback */
+  /*Manages a subscription callback on /tb_sim/imu topic 
+  and assigns a maximum size to the queue*/
   ros::Subscriber subImu = nh.subscribe("/tb_sim/imu", 1000, callback);
+  /*Construct a Diagnostic Task and combine multiple diagnostic
+  tasks using a CompositeDiagnosticTask.*/
   diagnostic_updater::FunctionDiagnosticTask sogliex("Chek soglie x",
        boost::bind(&check_soglie_x, boost::placeholders::_1));
   diagnostic_updater::FunctionDiagnosticTask sogliey("Chek soglie y",
@@ -33,9 +39,11 @@ int main(int argc, char **argv)
   diagnostic_updater::FunctionDiagnosticTask sogliez("Chek soglie z",
        boost::bind(&check_soglie_z, boost::placeholders::_1));
   diagnostic_updater::CompositeDiagnosticTask bounds("Bound check");
+  //Creates a new task, registers the task, and returns the instance.
   bounds.addTask(&sogliex);
   bounds.addTask(&sogliey);
   bounds.addTask(&sogliez);
+  //Add the CompositeDiagnosticTask to our Updater.
   updaterImu.add(bounds);
 
 
@@ -48,9 +56,12 @@ int main(int argc, char **argv)
   {
     
     ros::Duration(0.1).sleep();
-
+    /* entra nel loop di attesa in cui legge i messaggi e chiama i callback
+    corrispondenti. Esce dal loop in caso che il processo venga terminato da crtl-c o
+    dal master */
+    //spinOnce() will call all the callbacks waiting to be called at that point in time.
     ros::spinOnce();
-
+    //Call updater
     updaterImu.update();
     
   }
