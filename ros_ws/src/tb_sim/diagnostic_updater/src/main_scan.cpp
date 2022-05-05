@@ -28,7 +28,8 @@ int main(int argc, char **argv)
   /*Manages a subscription callback on /scan topic 
   and assigns a maximum size to the queue*/
   ros::Subscriber subScan = nh.subscribe("/scan", 1000, callback4);
-
+  
+  //Construct a Diagnostic Task 
   diagnostic_updater::FunctionDiagnosticTask scan("Chek scan",
        boost::bind(&check_scan, boost::placeholders::_1));
   diagnostic_updater::FunctionDiagnosticTask scan_on_off("Chek scan on/off",
@@ -45,8 +46,11 @@ int main(int argc, char **argv)
   {
     
     ros::Duration(0.1).sleep();
-    //spinOnce() will call all the callbacks waiting to be called at that point in time.
+    
+    /*spinOnce() will call all the callbacks waiting to be 
+    called at that point in time.*/
     ros::spinOnce();
+    
     //Call updater
     updaterScan.update();
   }
