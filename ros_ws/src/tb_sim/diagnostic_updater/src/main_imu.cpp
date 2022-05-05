@@ -25,8 +25,7 @@ int main(int argc, char **argv)
   diagnostic_updater::Updater updaterImu; //Construct an updater class.
   
   updaterImu.setHardwareID("/tb_sim/imu");
-  /* sottoscrive il topic /tb_sim/imu, assegna una dimensione massima alla coda e
-  collega l’evento al callback */
+
   /*Manages a subscription callback on /tb_sim/imu topic 
   and assigns a maximum size to the queue*/
   ros::Subscriber subImu = nh.subscribe("/tb_sim/imu", 1000, callback);
@@ -56,9 +55,6 @@ int main(int argc, char **argv)
   {
     
     ros::Duration(0.1).sleep();
-    /* entra nel loop di attesa in cui legge i messaggi e chiama i callback
-    corrispondenti. Esce dal loop in caso che il processo venga terminato da crtl-c o
-    dal master */
     //spinOnce() will call all the callbacks waiting to be called at that point in time.
     ros::spinOnce();
     //Call updater
