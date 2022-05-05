@@ -28,11 +28,11 @@ int main(int argc, char **argv)
   diagnostic_updater::Updater updater4;
 
   updater4.setHardwareID("/nav_camera/image_raw");
+  
   /*Manages a subscription callback on /nav_camera/image_raw topic 
   and assigns a maximum size to the queue*/
   ros::Subscriber sub3 = nh.subscribe("/nav_camera/image_raw", 1000, callback3);
-  /*Construct a Diagnostic Task and combine multiple diagnostic
-  tasks using a CompositeDiagnosticTask.*/
+  //Construct a Diagnostic Task 
   diagnostic_updater::FunctionDiagnosticTask nav_camera("Chek nav camera",
        boost::bind(&check_nav_camera, boost::placeholders::_1));
   //Add the DiagnosticTask to our Updater.
