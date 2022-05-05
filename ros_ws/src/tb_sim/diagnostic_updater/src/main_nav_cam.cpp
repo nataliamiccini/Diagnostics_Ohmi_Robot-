@@ -17,19 +17,26 @@
 
 int main(int argc, char **argv)
 {
+  //Ros initialization function.
   ros::init(argc, argv, "diagnostic_updater_nav_cam");
-  
+  //Construct a NodeHandle Class. This class is used for writing nodes.
   ros::NodeHandle nh;
+  //Get parameters from .yaml file and store them into indicated variables.
   nh.getParam("nav_camera_zero", nav_camera_zero);
-
+  
+  //Construct an updater class.
   diagnostic_updater::Updater updater4;
 
   updater4.setHardwareID("/nav_camera/image_raw");
+  /*Manages a subscription callback on /nav_camera/image_raw topic 
+  and assigns a maximum size to the queue*/
   ros::Subscriber sub3 = nh.subscribe("/nav_camera/image_raw", 1000, callback3);
+  /*Construct a Diagnostic Task and combine multiple diagnostic
+  tasks using a CompositeDiagnosticTask.*/
   diagnostic_updater::FunctionDiagnosticTask nav_camera("Chek nav camera",
        boost::bind(&check_nav_camera, boost::placeholders::_1));
+  //Add the DiagnosticTask to our Updater.
   updater4.add(nav_camera);
-
 
   updater4.broadcast(0, "Doing important initialization stuff.");
   
@@ -39,9 +46,12 @@ int main(int argc, char **argv)
   {
     
     ros::Duration(0.1).sleep();
-
+    
+    /*spinOnce() will call all the 
+    callbacks waiting to be called at that point in time.*/
     ros::spinOnce();
-
+    
+    //Call updater
     updater4.update();
 
   }
