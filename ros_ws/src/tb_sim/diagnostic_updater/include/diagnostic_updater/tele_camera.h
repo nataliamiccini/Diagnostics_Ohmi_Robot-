@@ -34,4 +34,18 @@ void check_tele_camera(diagnostic_updater::DiagnosticStatusWrapper &stat)
 }
 
 
+/*
+void cameraCallback(const sensor_msgs::CameraInfoConstPtr& info_msg)
+ {
+     camera_h = info_msg->height;
+     camera_w = info_msg->width;
+ }
 
+void check_camera(diagnostic_updater::DiagnosticStatusWrapper &stat)
+{
+ if(camera_h!=camera_off && camera_w!=camera_off)
+ stat.summaryf(diagnostic_msgs::DiagnosticStatus::OK, "Camera on: [%i] [%i]", camera_w, camera_h);
+ else
+ stat.summaryf(diagnostic_msgs::DiagnosticStatus::ERROR, "Camera off: [%i] [%i]", camera_w, camera_h);
+}
+*/
