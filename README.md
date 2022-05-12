@@ -1,9 +1,9 @@
 # Diagnostics_Ohmni_Robot-
 This is a workspace for Ohmnilabs robot simulation and dignostics.
-![Diagnostics_Ohmi_Robot-](docs/gazebo.PNG)
-![Diagnostics_Ohmi_Robot-](docs/rviz.PNG)
-![Diagnostics_Ohmi_Robot-](docs/rqt_robot_monitor.png)
-![Diagnostics_Ohmi_Robot-](docs/rqt_runtime_monitor.png)
+![Diagnostics_Ohmni_Robot-](docs/gazebo.PNG)
+![Diagnostics_Ohmni_Robot-](docs/rviz.PNG)
+![Diagnostics_Ohmni_Robot-](docs/rqt_robot_monitor.png)
+![Diagnostics_Ohmni_Robot-](docs/rqt_runtime_monitor.png)
 
 Currently, in this simulation includes:
 * KOLVN office model with texture and material for RGB camera. This model is constructed by Sketchup, adding material and texture mapping using Blender
@@ -20,7 +20,7 @@ Currently, in this simulation includes:
 Open terminal and clone package
 
 ```
-~..$  git clone https://github.com/nataliamiccini/Diagnostics_Ohmi_Robot-.git-b indigo-devel
+~..$  git clone https://github.com/nataliamiccini/Diagnostics_Ohmni_Robot-.git-b indigo-devel
 ```
 Install with catkin_make
 ```
